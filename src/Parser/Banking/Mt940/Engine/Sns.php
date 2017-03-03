@@ -70,4 +70,16 @@ class Sns extends Engine
         $results[1][0] = implode("\r\n", $lines);
     }
 
+
+    /**
+     * Overloaded: Is applicable if first line has :940:.
+     *
+     * {@inheritdoc}
+     */
+    public static function isApplicable($string)
+    {
+        $firstline = strtok($string, "\r\n\t");
+        return strpos($firstline, 'F01SNSBNL2AXXXX0000000000') !== false;
+    }
+
 }
